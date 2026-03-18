@@ -1,182 +1,108 @@
 (function() {
-  // Mock travel recommendations data
-  const mockRecommendations = [
+  // Enhanced travel recommendations data with two images each
+  const recommendations = [
+    // Beach recommendations with two images
     { 
       category: 'beach', 
-      name: 'Bora Bora', 
-      description: 'Crystal clear lagoons and overwater bungalows. A true paradise.', 
-      price: '$$$ (from $1,200)' 
+      name: 'Bora Bora, French Polynesia', 
+      description: 'Crystal clear lagoons and overwater bungalows. A true paradise on Earth.',
+      images: [
+        'https://images.unsplash.com/photo-1512453979798-5c252e2468d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1514282402647-0f49bba825f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$$ (from $1,200)',
+      duration: '7 days'
     },
     { 
       category: 'beach', 
-      name: 'Whitehaven Beach', 
-      description: 'Whitsunday Island – pure silica sand and turquoise water.', 
-      price: '$$ (from $650)' 
+      name: 'Whitehaven Beach, Australia', 
+      description: 'Whitsunday Island – pure silica sand and turquoise water stretching for miles.',
+      images: [
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$ (from $650)',
+      duration: '5 days'
+    },
+    { 
+      category: 'beach', 
+      name: 'Maldives', 
+      description: 'Picture-perfect atolls with pristine beaches and incredible marine life.',
+      images: [
+        'https://images.unsplash.com/photo-1514282402647-0f49bba825f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1573843981270-5600c5f287f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$$$ (from $2,000)',
+      duration: '7 days'
+    },
+    
+    // Temple recommendations with two images
+    { 
+      category: 'temple', 
+      name: 'Angkor Wat, Cambodia', 
+      description: 'Majestic khmer temple complex, the largest religious monument in the world.',
+      images: [
+        'https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1557479078-9e2d4d8f3e7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$ (from $400)',
+      duration: '4 days'
     },
     { 
       category: 'temple', 
-      name: 'Angkor Wat', 
-      description: 'Majestic khmer temple complex in Cambodia, sunrise views.', 
-      price: '$$ (from $400)' 
+      name: 'Bagan, Myanmar', 
+      description: 'Thousands of ancient temples and pagodas scattered across the plains.',
+      images: [
+        'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1589884628622-79a2673b30e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$ (from $550)',
+      duration: '5 days'
     },
     { 
       category: 'temple', 
-      name: 'Bagan', 
-      description: 'Thousands of ancient temples and pagodas in Myanmar.', 
-      price: '$$ (from $550)' 
+      name: 'Borobudur, Indonesia', 
+      description: 'The world\'s largest Buddhist temple, with stunning reliefs and sunrise views.',
+      images: [
+        'https://images.unsplash.com/photo-1583404437310-5249c8a2f0d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$ (from $480)',
+      duration: '4 days'
+    },
+    
+    // Country-based recommendations (Japan, Thailand, Italy) with two images each
+    { 
+      category: 'japan', 
+      country: 'Japan',
+      name: 'Tokyo, Japan', 
+      description: 'Neon-lit skyscrapers, ancient temples, and the best sushi in the world.',
+      images: [
+        'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$$ (from $1,300)',
+      duration: '6 days'
     },
     { 
       category: 'japan', 
-      name: 'Kyoto', 
-      description: 'Geishas, bamboo groves, and golden pavilions – cultural heart of Japan.', 
-      price: '$$$ (from $1,100)' 
+      country: 'Japan',
+      name: 'Kyoto, Japan', 
+      description: 'Geishas, bamboo groves, and golden pavilions – the cultural heart of Japan.',
+      images: [
+        'https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
+      price: '$$$ (from $1,100)',
+      duration: '5 days'
     },
     { 
-      category: 'japan', 
-      name: 'Tokyo', 
-      description: 'Neon, tradition, and incredible food – a metropolis like no other.', 
-      price: '$$$ (from $1,300)' 
+      category: 'thailand', 
+      country: 'Thailand',
+      name: 'Phuket, Thailand', 
+      description: 'Stunning beaches, vibrant nightlife, and beautiful island hopping.',
+      images: [
+        'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      ],
     },
-    { 
-      category: 'adventure', 
-      name: 'Patagonia', 
-      description: 'Towering peaks, glaciers, and wild hiking trails.', 
-      price: '$$$ (from $1,500)' 
-    },
-    { 
-      category: 'culture', 
-      name: 'Marrakech', 
-      description: 'Souks, palaces, and vibrant colours – immerse in Moroccan culture.', 
-      price: '$$ (from $700)' 
-    },
-    { 
-      category: 'culture', 
-      name: 'Cusco', 
-      description: 'Ancient Inca capital, gateway to Machu Picchu.', 
-      price: '$$ (from $680)' 
-    }
-  ];
-
-  // DOM Elements
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.getElementById('searchBtn');
-  const clearBtn = document.getElementById('clearBtn');
-  const resultsPanel = document.getElementById('resultsPanel');
-  const resultsList = document.getElementById('resultsList');
-  const noResultsMsg = document.getElementById('noResultsMsg');
-  const closeResultsBtn = document.getElementById('closeResultsBtn');
-  const bookNowBtn = document.getElementById('bookNowBtn');
-  
-  // Navigation links
-  const homeLink = document.getElementById('home-link');
-  const aboutLink = document.getElementById('about-link');
-  const contactLink = document.getElementById('contact-link');
-
-  // Event Listeners for Navigation
-  homeLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('🏠 Home page – you are already here!');
-  });
-
-  aboutLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('📖 About TravelBloom: We craft authentic journeys since 2025.');
-  });
-
-  contactLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    alert('📧 Contact us: hello@travelbloom.com | 🗺️ 24/7 support');
-  });
-
-  // Book Now button
-  bookNowBtn.addEventListener('click', () => {
-    alert('✨ Book now feature – choose your adventure! (demo)');
-  });
-
-  // Filter destinations based on keyword
-  function filterDestinations(keyword) {
-    if (!keyword.trim()) return [];
-    const lowerKeyword = keyword.toLowerCase().trim();
-    
-    return mockRecommendations.filter(item => 
-      item.category.includes(lowerKeyword) || 
-      item.name.toLowerCase().includes(lowerKeyword) ||
-      item.description.toLowerCase().includes(lowerKeyword)
-    );
-  }
-
-  // Render search results
-  function renderResults(results) {
-    resultsList.innerHTML = '';
-    
-    if (results.length === 0) {
-      noResultsMsg.style.display = 'block';
-    } else {
-      noResultsMsg.style.display = 'none';
-      results.forEach(r => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'result-item';
-        itemDiv.innerHTML = `
-          <h3>📍 ${r.name}</h3>
-          <p>${r.description}</p>
-          <span class="price">${r.price}</span>
-        `;
-        resultsList.appendChild(itemDiv);
-      });
-    }
-  }
-
-  // Perform search and show results
-  function performSearch() {
-    const query = searchInput.value;
-    const results = filterDestinations(query);
-    renderResults(results);
-    resultsPanel.classList.add('show');
-  }
-
-  // Search button click
-  searchBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    performSearch();
-  });
-
-  // Enter key in input
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      performSearch();
-    }
-  });
-
-  // Clear button
-  clearBtn.addEventListener('click', () => {
-    searchInput.value = '';
-    resultsList.innerHTML = '';
-    noResultsMsg.style.display = 'none';
-    resultsPanel.classList.remove('show');
-  });
-
-  // Close results panel
-  closeResultsBtn.addEventListener('click', () => {
-    resultsPanel.classList.remove('show');
-  });
-
-  // Fetch API demonstration (simulated)
-  window.fetchMock = function() {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(mockRecommendations), 200);
-    });
-  };
-
-
-
-  // Optional: Close panel when clicking outside (advanced)
-  document.addEventListener('click', (e) => {
-    if (resultsPanel.classList.contains('show') && 
-        !resultsPanel.contains(e.target) && 
-        !searchBtn.contains(e.target) && 
-        !searchInput.contains(e.target)) {
-      resultsPanel.classList.remove('show');
-    }
-  });
-})();
