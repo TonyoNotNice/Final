@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TravelBloom · explore your next destination</title>
-  <!-- Font Awesome for clean social icons -->
+  <title>TravelBloom · Discover Your Next Adventure</title>
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css">
@@ -14,14 +14,14 @@
   <nav class="navbar">
     <div class="logo">Travel<span>Bloom</span></div>
     <div class="nav-links">
-      <a href="#" id="home-link">Home</a>
-      <a href="#" id="about-link">About Us</a>
-      <a href="#" id="contact-link">Contact Us</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
     </div>
     <!-- Search bar with buttons -->
     <div class="search-section">
-      <input type="text" id="searchInput" placeholder="Enter destination or keyword... (e.g., beach, japan, temple)">
-      <button id="searchBtn"><i class="fas fa-search" style="margin-right: 5px;"></i>Search</button>
+      <input type="text" id="searchInput" placeholder="Search beaches, temples, countries...">
+      <button id="searchBtn"><i class="fas fa-search"></i>Search</button>
       <button id="clearBtn" class="clear-btn">Clear</button>
     </div>
   </nav>
@@ -42,23 +42,24 @@
     <div class="hero-area">
       <!-- main promotional content -->
       <div class="content-card">
-        <h1>EXPLORE <span>untouched corners</span></h1>
-        <p>🌍 Dive deep into cultural wonders, hidden trails, and authentic local stories. TravelBloom brings you closer to the heartbeat of every destination.</p>
+        <h1>EXPLORE <span>the world's wonders</span></h1>
+        <p>🌍 Discover breathtaking beaches, ancient temples, and vibrant cultures. TravelBloom brings you closer to the world's most amazing destinations.</p>
         <button class="book-btn" id="bookNowBtn">BOOK NOW</button>
       </div>
 
-      <!-- DYNAMIC RESULTS PANEL (initially hidden) -->
+      <!-- DYNAMIC RESULTS PANEL -->
       <div id="resultsPanel" class="results-panel">
         <div class="close-results" id="closeResultsBtn"><i class="fas fa-times-circle"></i></div>
+        <h2 class="results-title">Recommended Destinations</h2>
         <div id="resultsList"></div>
-        <div id="noResultsMsg" style="display: none;">✨ No matching destinations. Try something else.</div>
+        <div id="noResultsMsg" style="display: none;">✨ No matching destinations found. Try another search.</div>
       </div>
     </div>
   </div>
 
-  <!-- Simple footer -->
+  <!-- Footer -->
   <div class="footer-note">
-    🌟 TravelBloom — your gateway to authentic travel · <a href="#">About</a> · <a href="#">Contact</a>
+    🌟 TravelBloom — your gateway to authentic travel · <a href="about.html">About</a> · <a href="contact.html">Contact</a>
   </div>
 
   <!-- External JavaScript -->
